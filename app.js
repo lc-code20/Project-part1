@@ -36,13 +36,14 @@ app.get('/product/:id', (req,res) => {
         
         res.status(200).send(product);
 
-        console.log(`Reading product :\n`);
+        console.log(`Reading product:\n`);
         console.log(product);
 
     });
 
 });
 
+// CREATE
 app.post('/product', (req, res) => {
     
     let newProduct = {
@@ -57,12 +58,27 @@ app.post('/product', (req, res) => {
         
         res.status(200).send(product);
 
-        console.log(`adding product :\n`);
+        console.log(`Adding product:\n`);
         console.log(product);
 
     });
 
 
+});
+
+// DELETE one - RESTful DELETE
+app.delete('/delete/:id', (req, res) => {
+    
+    let prodId = req.params.id;
+
+    console.log(`Deleting product by id: ${prodId} \n`);
+
+    db.remove({_id: prodId}, (err, product)=> {
+        if (err) res.send(err);
+
+        res.sendStatus(204);
+        console.log("Successfully deleted")
+    })
 });
 
 module.exports = {app};
