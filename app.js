@@ -9,6 +9,18 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+// createProduct function
+createProduct = (pName, pDescription, pPrice) => {
+
+    let product = {
+        name: pName,
+        description: pDescription,
+        price: pPrice
+    };
+
+    return product;
+}
+
 // READ (all) - RESTful GET
 app.get('/product', (req,res) => {
 
@@ -45,12 +57,14 @@ app.get('/product/:id', (req,res) => {
 
 // CREATE
 app.post('/newProduct', (req, res) => {
-    
-    let newProduct = {
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price
-    };
+
+    let newProduct = createProduct(req.body.name, req.body.description, req.body.price)
+
+    // let newProduct = {
+    //     name: req.body.name,
+    //     description: req.body.description,
+    //     price: req.body.price
+    // };
 
     db.insert(newProduct, (err, product) => {
 
@@ -67,7 +81,7 @@ app.post('/newProduct', (req, res) => {
 });
 
 // DELETE one - RESTful DELETE
-app.delete('/delete/:id', (req, res) => {
+app.delete('/product/delete/:id', (req, res) => {
     
     let prodId = req.params.id;
 
@@ -98,7 +112,7 @@ app.put('/product/update/:id', (req, res) => {
     db.update({_id: prodId}, updatedProduct, (err, product)=> {
         if (err) res.send(err);
 
-        res.sendStatus(200);
+        res.sendStatus(200).send(updatedProduct);
         console.log("Successfully updated");
     })
 });
