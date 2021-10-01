@@ -25,4 +25,22 @@ app.get('/product', (req,res) => {
 
 });
 
+// READ - RESTful GET one product
+app.get('/product/:id', (req,res) => {
+
+    let prodId = req.params.id;
+
+    db.find({_id:prodId}, (err, product) => {
+
+        if (err) res.send(err);
+        
+        res.status(200).send(product);
+
+        console.log(`Reading product:\n`);
+        console.log(product);
+
+    });
+
+});
+
 module.exports = {app};
