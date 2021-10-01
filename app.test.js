@@ -30,7 +30,6 @@ describe('CREATE request', () => {
         expect(res.statusCode).toBe(500);
     });
 
-
 });
 
 // UNIT TEST THE PRODUCT BUILDER
