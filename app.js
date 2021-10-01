@@ -36,10 +36,32 @@ app.get('/product/:id', (req,res) => {
         
         res.status(200).send(product);
 
-        console.log(`Reading product:\n`);
+        console.log(`Reading product :\n`);
         console.log(product);
 
     });
+
+});
+
+app.post('/product', (req, res) => {
+    
+    let newProduct = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price
+    };
+
+    db.insert(newProduct, (err, product) => {
+
+        if (err) res.send(err);
+        
+        res.status(200).send(product);
+
+        console.log(`adding product :\n`);
+        console.log(product);
+
+    });
+
 
 });
 
