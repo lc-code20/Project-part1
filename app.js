@@ -118,4 +118,4 @@ app.put('/product/update/:id', (req, res) => {
 });
 
 
-module.exports = {app};
+module.exports = {app, createProduct};
