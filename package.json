@@ -2,10 +2,10 @@
   "name": "Project-part1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "start": "nodemon index.js"
+    "test": "jest --coverage --passWithNoTests",
+    "start": "nodemon start.js"
   },
   "repository": {
     "type": "git",
