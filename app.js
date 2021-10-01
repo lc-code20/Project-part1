@@ -44,7 +44,7 @@ app.get('/product/:id', (req,res) => {
 });
 
 // CREATE
-app.post('/product', (req, res) => {
+app.post('/newProduct', (req, res) => {
     
     let newProduct = {
         name: req.body.name,
@@ -80,5 +80,28 @@ app.delete('/delete/:id', (req, res) => {
         console.log("Successfully deleted")
     })
 });
+
+// UPDATE - RESTful UPDATE
+app.put('/product/update/:id', (req, res) => {
+    
+    let prodId = req.params.id;
+
+    let updatedProduct = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        _id: prodId
+    };
+
+    console.log(`Updating product by id: ${prodId} \n`);
+
+    db.update({_id: prodId}, updatedProduct, (err, product)=> {
+        if (err) res.send(err);
+
+        res.sendStatus(200);
+        console.log("Successfully updated");
+    })
+});
+
 
 module.exports = {app};
