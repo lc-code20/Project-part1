@@ -7,3 +7,5 @@ After you have cloned this repo,
 2. npm test - for tests
 
 3. npm start - to start server
+
+4. for revert
