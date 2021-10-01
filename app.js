@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({
 // createProduct function
 createProduct = (pName, pDescription, pPrice) => {
 
+    if (pName == undefined || pDescription == undefined || pPrice == undefined){
+        return null;
+    }
+
     let product = {
         name: pName,
         description: pDescription,
@@ -60,23 +64,18 @@ app.post('/newProduct', (req, res) => {
 
     let newProduct = createProduct(req.body.name, req.body.description, req.body.price)
 
-    // let newProduct = {
-    //     name: req.body.name,
-    //     description: req.body.description,
-    //     price: req.body.price
-    // };
+    if(!newProduct){
+        res.status(500).send(null);
+    } else {
+        db.insert(newProduct, (err, product) => {
 
-    db.insert(newProduct, (err, product) => {
-
-        if (err) res.send(err);
-        
-        res.status(200).send(product);
-
-        console.log(`Adding product:\n`);
-        console.log(product);
-
-    });
-
+            if (err) res.send(err);
+            res.status(200).send(product);
+            
+            console.log(`Adding product:\n`);
+            console.log(product); 
+        });
+    }
 
 });
 

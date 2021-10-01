@@ -37,7 +37,33 @@ describe('CREATE request', () => {
 describe('Unit Tests', () => {
 
     test('product object creater', () => {
-        // TEST IN HERE
+        
+        let tProduct = "testProduct";
+        let tDescription = "test function success case";
+        let tPrice = 10;
+
+        let product = {
+            name: tProduct,
+            description: tDescription,
+            price: tPrice
+        };
+
+        let productFromFunction = build(tProduct, tDescription, tPrice);
+
+        expect(productFromFunction).toStrictEqual(product);
+        
+    });
+
+    test('product object creater2', () => {
+        
+        let tProduct = "testProduct2";
+        let tDescription = "test function failure case";
+        let tPrice = undefined;
+
+        let productFromFunction = build(tProduct, tDescription, tPrice);
+
+        expect(productFromFunction).toStrictEqual(null);
+        
     });
 
 });
