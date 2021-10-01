@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/lc-code20/Project-part1/issues"
   },
-  "homepage": "https://github.com/lc-code20/Project-part1#readme"
+  "homepage": "https://github.com/lc-code20/Project-part1#readme",
+  "devDependencies": {
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
 }
