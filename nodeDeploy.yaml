@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodedeploy
+  labels: 
+    app: nodeDeploy
+spec:
+  selector:
+    matchLabels:
+      app: nodepod
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nodepod
+    spec:
+      containers:
+      - name: node-container
+        image: gcr.io/training-325404/project_nodeimage_louisa:v10
+        ports:
+        - containerPort: 9000
