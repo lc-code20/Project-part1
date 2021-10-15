@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --coverage --passWithNoTests",
-    "start": "nodemon start.js"
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
